@@ -7,7 +7,7 @@ INCPATH = -I${LCIO}/src/cpp/include -I${LCIO}/include
 # NOTE: /lib/ などのライブラリをリンクした場合
 LIBS = -L${LCIO}/lib -llcio
 
-CXXFLAGS += -std=c++11
+CXXFLAGS += -std=c++14
 
 all	: Event.o Dict.o
 ifeq (${LCIO},)

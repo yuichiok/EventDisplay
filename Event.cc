@@ -393,6 +393,7 @@ using namespace lcio;
 using namespace std;
 
 float PTCut = 1.5; //GeV; Tracks with PT less than this threshold will not be displayed;
+//float PTCut = 0.0;
 
 TEvePathMark * PathMarkEndTrackDecay(TEveVector &/*Vtx*/, TEveVector &End){
 	TEveVector Mark = End;
@@ -485,7 +486,8 @@ TEveElementList* Event::BuildMCParticles( LCEvent *evt ){
 
 
 	std::string MCTrackName;
-	MCTrackName="MCParticle";
+	//MCTrackName="MCParticle";
+	MCTrackName="MCParticlesSkimmed";
 	int PID, ParentNum, DaughterNum, EventNr, MotherPID, OriginPID;
 	int displayedMCParticle = 0;
 	int skippedMCParticle = 0;
@@ -613,8 +615,11 @@ TEveElementList* Event::BuildMCParticles( LCEvent *evt ){
 				PT = sqrt(px*px+py*py);
 				//	PT = energy;					//tmplate usage...
 
+				std::cout << "PID = " << PID << std::endl;
+
 				if (ParentNum > 0)
 				{
+					//std::cout << "ParentNum = " << ParentNum << std::endl;
 					MCParticleVec mother = part->getParents();
 					MotherPID = mother[0]->getPDG();
 					MotherEnergy = mother[0]->getEnergy();
@@ -628,16 +633,18 @@ TEveElementList* Event::BuildMCParticles( LCEvent *evt ){
 						cout << PID << endl;
 						cout << endl;
 					}
-					else continue;
+					//else continue;
 				}
 				else continue;
 
+/*
 				switch (PID) { 
 					case 94:
 					case 6:
 					case 21:	
 					continue;
 				}
+*/
 
 				if(PID == 22 && energy > 0.5)	//Only show the information for particle/gamma with energy > 0.5GeV
 				{	
@@ -871,7 +878,7 @@ TEveElementList* Event::BuildMCParticles( LCEvent *evt ){
 			// MCTracks->AddElement(cpdNeutrinos);
 			// MCTracks->AddElement(cpdGamma);
 			// MCTracks->AddElement(cpdNeutralHad);
-			// MCTracks->AddElement(cpdMuons);
+			MCTracks->AddElement(cpdMuons);
 			// MCTracks->AddElement(cpdPions);
 			// MCTracks->AddElement(cpdElectrons);
 			// MCTracks->AddElement(cpdChargedKaons);
