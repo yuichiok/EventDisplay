@@ -3,3 +3,4 @@
 *.slcio
 run
 *.pcm
+Makefile
