@@ -878,10 +878,12 @@ TEveElementList* Event::BuildMCParticles( LCEvent *evt ){
 			// MCTracks->AddElement(cpdNeutrinos);
 			// MCTracks->AddElement(cpdGamma);
 			// MCTracks->AddElement(cpdNeutralHad);
-			MCTracks->AddElement(cpdMuons);
+			// MCTracks->AddElement(cpdMuons);
 			// MCTracks->AddElement(cpdPions);
 			// MCTracks->AddElement(cpdElectrons);
-			// MCTracks->AddElement(cpdChargedKaons);
+
+			MCTracks->AddElement(cpdChargedKaons);
+
 			// MCTracks->AddElement(cpdProtons);
 			// MCTracks->AddElement(cpdNeutrons);
 			// MCTracks->AddElement(cpdKlongs);
