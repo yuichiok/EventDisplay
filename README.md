@@ -12,10 +12,11 @@ ROOT - https://root.cern.ch/
 
 This project uses root_v6.12.06
 
-### How to use it
+### How to Use
 
-Only type this command, in this directory.
+Make and execute the program by
 
 ```
-root sample.C
+make
+./run
 ```
